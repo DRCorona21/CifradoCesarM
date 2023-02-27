@@ -13,6 +13,7 @@ function Cargar(){
         let texto = document.getElementById("cadena").value;
         let desplazamiento = document.getElementById("desplazamiento").value;               
         document.getElementById("result").value = cifrar(texto, desplazamiento);
+        document.getElementById("result2").value = cifrarMurcielago(texto);
         //Esta ulltima le da el valor del resutado que retorna la funcion cifrar
     },true);
 
@@ -53,6 +54,34 @@ function cifrar(texto, desplazamiento) {
         }
     }
     return resultado;
+}
+
+function cifrarMurcielago(texto) {
+    let resultadoM='';
+    let abc2 = 'murcielago';
+    //Se crean las variables que me permiten conocer mi abecedario
+    //La variable resultado es la que se va a retornar para sustituir
+    //en el cuadro de texto result
+    //El desplazamiento ya esta definido en la funcion de inicio
+    //El modulo sirve para poder regresar
+    
+    if (texto){
+        for (let i=0; i<texto.length; ++i){
+            
+            if (abc2.indexOf(texto[i])!=-1)
+            {   
+                let posicionM=abc2.indexOf(texto[i]);
+                resultadoM+=posicionM+1;
+                //La variable posicion nos va a regresar la nueva posicion de la letra
+                //La variable resultado nos va a regresar la nueva letra con la nueva posicion
+            }
+            //Este else se encarga de cualquier caracter que no sea alguna letra
+            //de nuestro abecedario se regrese igual
+            else
+                resultadoM+=texto[i]; 
+        }
+    }
+    return resultadoM;
 }
 
 //La funcion descifrar es la que se encarga de desplazar las letras -3
